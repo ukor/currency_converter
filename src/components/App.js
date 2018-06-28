@@ -10,8 +10,8 @@ class App extends Component{
 		super(props);
 		this.state = {
 			app_name: "Currency Converter",
-			buildTools: ['ReactJS', 'w3css'],
-			persons: [{name: "Ukor", age: 20}, {name: "Jidechi", age: 21}, {name: "Ekundayo", age: 22}]
+			app_version: "v1.0.0",
+			buildTools: ["ReactJS", "w3css", "Currency Converter API", "IndexDB (IDB)", "Service Worker"],
 		}
 	}
 	render()
@@ -19,8 +19,8 @@ class App extends Component{
 		return (
 			<div className="w3-container main-container">
 				<Navbar app_name={this.state.app_name} />
-				<Form persons={this.state.persons} />
-				<Footer app_name={this.state.app_name} />
+				<Form />
+				<Footer bt={this.state.buildTools} app_name={this.state.app_name} />
 			</div>
 		);
 	}
