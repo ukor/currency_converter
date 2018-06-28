@@ -53,7 +53,14 @@ self.addEventListener("fetch", (event) => {
 		);
 	}
 
-	
+	/**
+	 * Intercept request for conversion rate
+	 * */
+	if(requestUrl.href.startsWith("https://free.currencyconverterapi.com/api/v5/convert")){
+		/**
+		 * Todo, do all the caching and fetch to/from IndexDb here instead of in the component Form.js
+		 * */
+	}
 
 });
 
