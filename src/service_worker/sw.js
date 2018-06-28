@@ -35,6 +35,24 @@ self.addEventListener("fetch", (event) => {
 		);
 	}
 
+	/**
+	 * Intercept request to free.currencyconverterapi.com
+	 * */
+	if(requestUrl.href === "https://free.currencyconverterapi.com/api/v5/currencies")
+	{
+		/**
+		 * Todo, do all the caching and fetch to/from IndexDb here instead of in the component Form.js
+		 * */
+		event.respondWith(
+			IDBcurrency_list.count().then((count) =>{
+				if(count <= 0)
+				{
+					return fetch(requestUrl.href);
+				}
+			})
+		);
+	}
+
 	
 
 });
