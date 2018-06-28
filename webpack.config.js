@@ -1,12 +1,16 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlExcludePlugin = require("html-webpack-exclude-assets-plugin");
 
 
 module.exports = {
-	entry: "./src/index.js",
+	entry: {
+		app: "./src/index.js",
+		sw: "./src/service_worker/sw.js"},
 	output: {
 		path: path.join(__dirname, "/build"),
-		filename: 'bundle.js'
+		filename: '[name].bundle.js',
+		globalObject: 'this'
 	},
 	module:
 	{
@@ -29,7 +33,9 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: "./public/index.html"
-		})
+			template: "./public/index.html",
+			excludeAssets: [/sw.*.js/] // exclude injecting service worker script
+		}),
+		new HtmlExcludePlugin()
 	]
 }
