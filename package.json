@@ -25,6 +25,7 @@
   "homepage": "https://github.com/ukor/currency_converter#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "gh-pages": "^1.2.0",
     "idb": "^2.1.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
