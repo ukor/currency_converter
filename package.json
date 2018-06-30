@@ -1,7 +1,7 @@
 {
   "name": "currency_converter",
   "version": "1.0.0",
-  "homepage": "https://ukor.github.io/currency-converter",
+  "homepage": "https://ukor.github.io/currency_converter",
   "description": "Simple currency convert for ALC3.0 ",
   "main": "index.js",
   "scripts": {

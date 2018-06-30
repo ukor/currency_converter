@@ -68,7 +68,7 @@ self.addEventListener("fetch", (event) => {
 self.addEventListener("activate", (event) => {
 	event.waitUntil(
 		caches.keys().then((cacheName) => {
-			console.log("cache name ", cacheNames);
+			console.log("cache name ", cacheName);
 			return Promise.all(
 				cacheNames.filter((cacheName) => {
 					return cacheName.startsWith('currency-converter') && cacheName !== cache_name;
