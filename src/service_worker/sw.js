@@ -1,12 +1,22 @@
 import IDBcurrency_list from "../indexDB/currency_list";
 
 let cache_name = "currency_converter_v1.0";
-let url_to_cache = [
-	"/",
-	"/app.bundle.js"
-]
+
 // install cache
 self.addEventListener("install", (event) => {
+	let requestUrl = new URL(event.target.location);
+	
+	/** fix issue #1 */
+	let url_to_cache = requestUrl["origin"].startsWith("https://ukor.github.io")
+	? [
+		"https://ukor.github.io/currency_converter/",
+		"https://ukor.github.io/currency_converter/app.bundle.js"
+	] :
+	[
+		"/",
+		"/app.bundle.js"
+	];
+	console.log(url_to_cache);
 	event.waitUntil(
 		caches.open(cache_name).then((cache) => {
 			return cache.addAll(url_to_cache);
@@ -67,8 +77,7 @@ self.addEventListener("fetch", (event) => {
 
 self.addEventListener("activate", (event) => {
 	event.waitUntil(
-		caches.keys().then((cacheName) => {
-			console.log("cache name ", cacheName);
+		caches.keys().then((cacheNames) => {
 			return Promise.all(
 				cacheNames.filter((cacheName) => {
 					return cacheName.startsWith('currency-converter') && cacheName !== cache_name;
